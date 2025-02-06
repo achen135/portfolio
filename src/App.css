@@ -1,42 +1,346 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: url("/paper_background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-color: #fdfbf7;
+}
+
+.doodle {
+  position: absolute;
+}
+
+.dog-doodle img {
+  height: 360px;
+  top: 30%;
+  left: 20%;
+}
+
+.name-doodle img {
+  height: 320px;
+  bottom: 8%;
+  right: 6%;
+}
+
+.sun-doodle img {
+  height: 180px;
+  top: 2%;
+  right: 8%;
+}
+
+.smile-doodle img {
+  height: 140px;
+  top: 15%;
+  left: 30%
+}
+
+.swirl-doodle img {
+  height: 240px;
+  top: 70%;
+  left: 26%;
+}
+
+.weight-doodle img {
+  height: 160px;
+  bottom: 10%;
+  left: 5%;
+}
+
+.brain-doodle img {
+  right: 25%;
+  bottom: 12%;
+}
+
+.name-doodle2 img {
+  height: 240px;
+  top: 12%;
+  left: 5%;
+}
+
+.rice-doodle img {
+  height: 280px;
+  right: 6%;
+  top: 26%;
+}
+
+.line-doodle img {
+  bottom: 12%;
+  left: 48%;
+}
+
+.line-doodle2 img {
+  top: 50%;
+  left: 2%;
+}
+
+.exclamation-doodle img {
+  right: 30%;
+  top: 10%;
+}
+
+.line-doodle3 img {
+  top: 18%;
+  left: 42%;
+}
+
+.bar {
+  position: absolute;
+  font-size: 24px;
+  font-family: "Azeret Mono", serif;
+  border-bottom: 4px dashed #141414;
+  width: 100vw;
+  height: 8vh;
+  margin: 0;
+  padding-left: 2%;
+}
+
+.cartoon-image-container {
+  position: absolute;
+  top: 33%;
+  right: 33%;
+  opacity: 1;
+  transition: opacity -.75s ease; 
+}
+
+.cartoon-image-container h3 {
+  position: absolute;
+  white-space: nowrap;
+  transform: translateX(35%) translateY(-40%) rotate(6deg);
+  font-family: "Delicious Handrawn", serif;
+  font-size: 36px;
+  color: #797979;
   text-align: center;
+  opacity: 1;
+  transition: opacity 0.75s ease;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.cartoon-image-container img {
+  position: absolute;
+  height: 320px;
+  transform: rotate(10deg);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.screen-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;  /* Ensure it takes full screen height */
+  overflow: visible; /* Allow content to overflow the screen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.photo-container {
+  position: relative;
+  width: min(360px, 90%);
+  height: min(460px, 90vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.photo {
+  position: absolute;
+  width: 360px;
+  height: 540px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: white;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1;
+  padding-bottom: 20px; /* Add padding inside the photo to create space below the image */
+}
+
+
+.photo img {
+  position: absolute;
+  top: 3%;
+  height: 440px;
+}
+
+.photo p {
+  position: absolute;
+  bottom: 0;
+  font-family: "Delicious Handrawn", serif;
+  font-size: 36px;
+}
+
+.photo-container.hovered #p1 {
+  transform: rotate(-15deg) translateX(-200px) scale(1.2);
+}
+
+.photo-container.hovered #p2 {
+  transform: rotate(2deg) scale(1.2);
+}
+
+.photo-container.hovered #p3 {
+  transform: rotate(15deg) translateX(220px) scale(1.2);
+}
+
+@keyframes throwUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: translateY(-800px) rotate(270deg);
+    opacity: 0;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.photo-container.tossed {
+  position: absolute;
+}
+
+.photo-container.tossed .photo {
+  animation: throwUp 0.75s forwards;
+}
+
+.cartoon-image-container.tossed h3 {
+  opacity: 0;
+}
+
+.new-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 50px;
+  margin-top: 30px;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.new-cards-wrapper .photo {
+  position: relative;
+  width: 100%;  /* Make the photo take full width within its grid cell */
+  height: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white;
+  padding-bottom: 20px;
+}
+
+.new-cards-wrapper .photo:hover {
+  scale: 1.1;
+  transition: scale 0.5s ease;
+}
+
+.new-cards-wrapper .photo img {
+  position: absolute;
+  top: 3%;
+  height: 300px;
+}
+
+.new-cards-wrapper .photo p {
+  position: absolute;
+  bottom: 0;
+  font-family: "Delicious Handrawn", serif;
+  font-size: 24px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
-.card {
-  padding: 2em;
+.slider-screen-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #797979;
+  z-index: 5;
 }
 
-.read-the-docs {
-  color: #888;
+.slider {
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;  /* Ensures the image covers the container without distortion */
+  border-radius: 10px;
+  z-index: 6;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: -10rem;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  z-index: 6;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: -10rem;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  z-index: 6;
+}
+
+.slide {
+  opacity: 0.5;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  animation: imageFadeIn 0.5s ease-in-out;
+}
+
+@keyFrames imageFadeIn {
+  0% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes sliderFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.slider-screen-wrapper {
+  opacity: 0;
+  animation: sliderFadeIn 0.75s ease-in-out forwards;
 }
